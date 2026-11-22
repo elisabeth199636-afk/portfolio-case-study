@@ -4,7 +4,7 @@
 
 输入项目背景、设计截图、过程稿和设计说明，组织出一条能由真实设计证据支持的案例主线，并给出章节文案、PC 长页展示方案和制作优先级。
 
-**版本：v1.0 · 纯指令 Skill · MIT 许可证**
+**版本：v1.1 · 策划指令＋可选本地 HTML 组件 · MIT 许可证**
 
 ## 适合什么项目
 
@@ -19,22 +19,22 @@
 
 ## 安装
 
-需要能读取本地 Skills 的 Codex。查看截图和附件还需当前运行环境支持相应文件。Skill 本身没有脚本或外部服务依赖。
+需要能读取本地 Skills 的 Codex。查看截图和附件还需当前运行环境支持相应文件。默认工作流以指令和参考文件为主，不需要命令行脚本或后端服务；可选首页组件是浏览器运行的自包含 HTML。
 
 ### 下载 ZIP
 
-1. 打开 [v1.0 Release](https://github.com/elisabeth199636-afk/portfolio-case-study/releases/tag/v1.0)。
-2. 下载 `portfolio-case-study-v1.0.zip`，解压得到 `portfolio-case-study/`。
+1. 打开 [v1.1 Release](https://github.com/elisabeth199636-afk/portfolio-case-study/releases/tag/v1.1)。
+2. 下载 `portfolio-case-study-v1.1.zip`，解压得到 `portfolio-case-study/`。
 3. 将整个文件夹放入 `~/.agents/skills/`，使主文件位于 `~/.agents/skills/portfolio-case-study/SKILL.md`。保留 `references/`、`assets/` 和 `agents/`。
 
 ### 使用 Git（macOS / Linux，尚未安装时）
 
 ```bash
 mkdir -p ~/.agents/skills
-git clone --branch v1.0 --depth 1 https://github.com/elisabeth199636-afk/portfolio-case-study.git ~/.agents/skills/portfolio-case-study
+git clone --branch v1.1 --depth 1 https://github.com/elisabeth199636-afk/portfolio-case-study.git ~/.agents/skills/portfolio-case-study
 ```
 
-以上命令安装固定的 v1.0 标签版本。Codex 会自动检测 Skill 变化；若列表没有出现，再重启 Codex。安装位置与调用方式见 [OpenAI 官方文档](https://learn.chatgpt.com/docs/build-skills)。
+以上命令安装固定的 v1.1 标签版本。Codex 会自动检测 Skill 变化；若列表没有出现，再重启 Codex。安装位置与调用方式见 [OpenAI 官方文档](https://learn.chatgpt.com/docs/build-skills)。
 
 ## 调用
 
@@ -67,6 +67,23 @@ $portfolio-case-study
 
 Hero、Overview、Problem、Strategy、Solution、Application、Impact 是可调整的叙事功能，不限定七页。展示建议包括图文层级、阅读顺序、对比、流程、关键状态、规则和场景，适合后续在 Figma 中手工制作。见 [完整输出模板](assets/output-template.md)。
 
+## 首页自定义（v1.1，按需启用）
+
+用户要求制作实际本地 HTML 版式时，可以加入：从本机选图／拖入图片、关联设计文件链接、本机保存、恢复默认、下载修改后的离线 HTML。纯策划任务保持原有八项输出。
+
+```text
+$portfolio-case-study
+请根据我的项目素材制作本地 HTML 作品集版式，
+首页支持上传封面、关联设计文件链接、恢复默认和下载修改版。
+所有项目素材和结果仅留本地。
+```
+
+实现规则见 [首页自定义说明](references/home-cover-editor.md)。[通用组件示例](assets/home-cover-editor.html) 不包含任何客户项目或设计图片；下载后可用本地浏览器打开，GitHub 文件页面只展示源码。它是功能起点，完整作品集的叙事和视觉需要依据用户素材制作。
+
+图片不上传服务器；链接作为“查看设计文件”的入口，不会自动转为截图，也不改变原平台权限。图片与设置按案例保存在浏览器中；可下载 HTML 留存。PNG／PDF 是静态输出，不具备真正的上传功能，也不会随 HTML 编辑自动更新。
+
+开源此 Skill 不等于授权公开之后输入的项目素材、设计稿或个案输出。只有用户另行明确要求才发布相应内容。
+
 ## 测试与示例
 
 先读 [测试材料与方法](references/testing.md)，再用 [质量检查表](references/quality-check.md) 检查结果。已有输出：
@@ -78,9 +95,11 @@ Hero、Overview、Problem、Strategy、Solution、Application、Impact 是可调
 
 前三例没有真实视觉原稿，只用于检查资料不足时的处理；第四例仅检验文本级泛化。它们不是可直接套用的真实项目案例。公开副本仅将本机绝对路径替换为通用安装路径，未改写策划正文。详见 [验证记录与未完成事项](docs/validation.md)。
 
-## V1.0 的限制与后续方向
+v1.1 首页组件的实际检查见 [组件验证记录](docs/home-cover-validation.md)。原四个示例仍是 v1.0 的历史文本测试，不代表重新完成了真实视觉项目验收。
 
-- 输出是策划建议；不自动排版 Figma，不开发网站，不产出动效成品或研究结果。
+## V1.1 的限制与后续方向
+
+- 默认输出案例策划；按需制作本地 HTML 版式与首页控件，不自动排版 Figma、部署在线网站或产出研究结果。
 - 读图能力取决于运行环境、素材质量和可访问性；无法查看的素材应明确标记。
 - 能核对已提供的证据与表达边界，不能自动证明用户陈述和原始数据真实。
 - 尚缺前三类真实视觉项目验收；未知类型仅有本次工具文本样本，泛化范围有限。
@@ -95,9 +114,9 @@ portfolio-case-study/
 ├── SKILL.md                  工作流程与使用约束
 ├── agents/openai.yaml        UI 元数据
 ├── references/               叙事、类型、版式、质检与测试方法
-├── assets/                   项目输入和输出模板
+├── assets/                   输入／输出模板与可选首页组件
 ├── examples/                 四个已执行的文本示例
-├── docs/validation.md        验证记录与边界
+├── docs/                    历史文本验证与首页组件验证记录
 ├── README.md
 └── LICENSE
 ```
