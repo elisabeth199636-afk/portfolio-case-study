@@ -4,3 +4,6 @@ __pycache__/
 .env
 .env.*
 work/
+
+# 本机用户偏好，不作为开源作者的默认审美分发
+references/local-visual-preferences.md

@@ -4,7 +4,9 @@
 
 输入项目背景、设计截图、过程稿和设计说明，组织出一条能由真实设计证据支持的案例主线，并给出章节文案、PC 长页展示方案和制作优先级。
 
-**版本：v1.1 · 策划指令＋可选本地 HTML 组件 · MIT 许可证**
+**版本：v1.2 · 策划、审美方向、视觉参考校准与可选 HTML 组件 · MIT 许可证**
+
+在 v1.1 基础上加入正向／反向视觉参考处理与可覆盖的展示审美方向。公开包只含通用规则、模板和占位组件，不包含用户项目或参考原图。
 
 ## 适合什么项目
 
@@ -23,18 +25,18 @@
 
 ### 下载 ZIP
 
-1. 打开 [v1.1 Release](https://github.com/elisabeth199636-afk/portfolio-case-study/releases/tag/v1.1)。
-2. 下载 `portfolio-case-study-v1.1.zip`，解压得到 `portfolio-case-study/`。
+1. 打开 [v1.2 Release](https://github.com/elisabeth199636-afk/portfolio-case-study/releases/tag/v1.2)，下载 `portfolio-case-study-v1.2.zip`。
+2. 解压得到 `portfolio-case-study/`。
 3. 将整个文件夹放入 `~/.agents/skills/`，使主文件位于 `~/.agents/skills/portfolio-case-study/SKILL.md`。保留 `references/`、`assets/` 和 `agents/`。
 
 ### 使用 Git（macOS / Linux，尚未安装时）
 
 ```bash
 mkdir -p ~/.agents/skills
-git clone --branch v1.1 --depth 1 https://github.com/elisabeth199636-afk/portfolio-case-study.git ~/.agents/skills/portfolio-case-study
+git clone --branch v1.2 --depth 1 https://github.com/elisabeth199636-afk/portfolio-case-study.git ~/.agents/skills/portfolio-case-study
 ```
 
-以上命令安装固定的 v1.1 标签版本。Codex 会自动检测 Skill 变化；若列表没有出现，再重启 Codex。安装位置与调用方式见 [OpenAI 官方文档](https://learn.chatgpt.com/docs/build-skills)。
+以上命令安装固定的 v1.2 标签版本。Codex 会自动检测 Skill 变化；若列表没有出现，再重启 Codex。安装位置与调用方式见 [OpenAI 官方文档](https://learn.chatgpt.com/docs/build-skills)。
 
 ## 调用
 
@@ -84,6 +86,20 @@ $portfolio-case-study
 
 开源此 Skill 不等于授权公开之后输入的项目素材、设计稿或个案输出。只有用户另行明确要求才发布相应内容。
 
+## 正向／反向视觉参考（v1.2）
+
+调用时可附上喜欢与不喜欢的设计案例，并说明参考用于作品集外层、原项目界面还是局部细节。Skill 会区分观察与偏好推断，比较正反案例的共同特征，把采用／避开的规则映射到具体章节，不把深色、渐变、卡片等特征一刀切。
+
+```text
+$portfolio-case-study
+请结合项目素材与正向／反向参考策划作品集。
+保留项目已确定的品牌方向，说明各章节采用和避开的处理及其依据。
+```
+
+可直接采用 [展示审美方向](references/visual-style-guide.md)：大图与观点标题、主辅明确的成果组、有实际内容的卡片、统一材质和章节疏密；避开通用企业官网式模块堆砌与无主次拼贴。支持深色和浅色，不把任何一种配色或固定布局当成所有项目的答案。
+
+参考处理规则见 [视觉参考校准](references/visual-references.md)。个人偏好可选存为安装目录的 `references/local-visual-preferences.md`；此文件及个人原图不属于公开发行包。其他使用者使用自己的参考。
+
 ## 测试与示例
 
 先读 [测试材料与方法](references/testing.md)，再用 [质量检查表](references/quality-check.md) 检查结果。已有输出：
@@ -97,7 +113,7 @@ $portfolio-case-study
 
 v1.1 首页组件的实际检查见 [组件验证记录](docs/home-cover-validation.md)。原四个示例仍是 v1.0 的历史文本测试，不代表重新完成了真实视觉项目验收。
 
-## V1.1 的限制与后续方向
+## V1.2 的限制与后续方向
 
 - 默认输出案例策划；按需制作本地 HTML 版式与首页控件，不自动排版 Figma、部署在线网站或产出研究结果。
 - 读图能力取决于运行环境、素材质量和可访问性；无法查看的素材应明确标记。
@@ -106,6 +122,8 @@ v1.1 首页组件的实际检查见 [组件验证记录](docs/home-cover-validat
 - 已完成显式读取 Skill 的文本行为检查；隐式选择命中率和跨客户端表现尚未验证。
 
 后续优先收集允许公开或已充分匿名化的真实项目，校准类型判断、证据链、章节节奏和制作交接；依据实际失败调整规则。
+
+v1.2 实际检查范围与未测试分支见 [更新验证](docs/visual-reference-validation.md)。
 
 ## 目录
 
